@@ -6,13 +6,13 @@ export default async function handler(req, res) {
     return;
   }
 
-  // Replace with your PayPal credentials
-  const clientId = 'YOUR_PAYPAL_CLIENT_ID';
-  const secret = 'YOUR_PAYPAL_SECRET';
+  // --- PayPal Live Credentials ---
+  const clientId = 'AYwnqKQANTptydubBPhcZc_Tq_a1T0zpNgb4YCJZcBr2E1nseI7HQUjI2Obq3wvp471DBbNUFgILjpaK';
+  const secret = 'ELhUZgmJMKv7uwmP94F3LjvJsgU_FMDvWOy-eOxpF-11J4fXsQNCrzNxIstRerCQeXp_coZVFoK1TL-6';
   const base64 = Buffer.from(clientId + ':' + secret).toString('base64');
 
   try {
-    // Step 1: Get access token
+    // Step 1: Get access token from PayPal
     const tokenResponse = await fetch('https://api-m.paypal.com/v1/oauth2/token', {
       method: 'POST',
       headers: {
@@ -24,7 +24,7 @@ export default async function handler(req, res) {
     const tokenData = await tokenResponse.json();
     const accessToken = tokenData.access_token;
 
-    // Step 2: Verify order
+    // Step 2: Verify the order
     const orderResponse = await fetch(`https://api-m.paypal.com/v2/checkout/orders/${orderID}`, {
       method: 'GET',
       headers: {
@@ -36,15 +36,15 @@ export default async function handler(req, res) {
 
     // Step 3: Check payment status
     if (orderData.status === 'COMPLETED') {
-      // Payment verified → redirect to Google Drive download
+      // Payment verified → redirect to Google Drive secure download
       res.writeHead(302, { Location: 'https://drive.google.com/uc?export=download&id=1xUU66tnymfCyy11buwcCtdyZGfQJHBpL' });
       res.end();
     } else {
-      res.status(403).send('Payment not verified.');
+      res.status(403).send('Payment not completed or invalid order.');
     }
 
   } catch (error) {
-    console.error(error);
-    res.status(500).send('Server error.');
+    console.error('PayPal API error:', error);
+    res.status(500).send('Server error verifying payment.');
   }
 }

@@ -13,19 +13,19 @@
     .product-banner { width:100%; height:250px; background:linear-gradient(135deg,#4C1D95,#4338CA); border-radius:15px; margin-bottom:25px; display:flex; align-items:center; justify-content:center; color:white; font-size:28px; font-weight:600; letter-spacing:1px; }
     ul li { margin:10px 0; font-size:16px; }
     .buy-button { text-align:center; margin:35px 0; }
-    .buy-button form input[type="submit"] {
+    .buy-button a {
+        display:inline-block;
         background: linear-gradient(90deg,#6366F1,#4C1D95);
         padding:16px 35px;
         border-radius:12px;
         font-size:20px;
         color:white;
         font-weight:700;
-        border:none;
-        cursor:pointer;
+        text-decoration:none;
         box-shadow:0 4px 15px rgba(99,102,241,0.4);
         transition:0.3s;
     }
-    .buy-button form input[type="submit"]:hover {
+    .buy-button a:hover {
         background: linear-gradient(90deg,#4C1D95,#4338CA);
         transform:translateY(-3px);
         box-shadow:0 6px 20px rgba(76,29,149,0.5);
@@ -54,19 +54,10 @@
     </ul>
 
     <div class="buy-button">
-        <!-- PayPal Buy Now with Auto-Redirect -->
-        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-            <!-- PayPal Buy Now -->
-            <input type="hidden" name="cmd" value="_xclick">
-            <input type="hidden" name="business" value="RexcelmarkTech@example.com">
-            <input type="hidden" name="item_name" value="Dooply WordPress Theme – Lifetime License">
-            <input type="hidden" name="amount" value="25.00">
-            <input type="hidden" name="currency_code" value="USD">
-            <!-- Auto-redirect after payment -->
-            <input type="hidden" name="return" value="https://rextv22subscribenow.github.io/digital-sales-page/download.html">
-            <input type="hidden" name="cancel_return" value="https://rextv22subscribenow.github.io/digital-sales-page/">
-            <input type="submit" value="💳 Buy Now — $25 USD">
-        </form>
+        <!-- PayPal.Me Direct Link with Auto-Redirect -->
+        <a href="https://www.paypal.com/paypalme/RexcelmarkTech/25" target="_blank">
+            💳 Buy Now — $25 USD
+        </a>
     </div>
 
     <p class="footer">© 2025 RexcelmarkTech. All Rights Reserved.</p>

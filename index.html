@@ -1,145 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Buy Dooply WordPress Theme v2.5.5 with Lifetime License – $25 USD. Instant download after payment.">
-<title>Dooply WordPress Theme v2.5.5 – Lifetime License</title>
-
-<style>
-body {
-    background: #0a0a0f;
-    color: #e5e5e5;
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-}
-
-.container {
-    max-width: 900px;
-    margin: 60px auto;
-    background: #121218;
-    padding: 50px;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-    border: 1px solid rgba(255,255,255,0.05);
-    position: relative;
-    overflow: hidden;
-}
-
-h1 {
-    text-align: center;
-    font-size: 36px;
-    background: linear-gradient(90deg,#6366F1,#4C1D95);
-    -webkit-background-clip: text;
-    color: transparent;
-    font-weight: 800;
-    margin-bottom: 20px;
-    animation: fadeInDown 1s ease forwards;
-}
-
-.product-banner {
-    width: 100%;
-    height: 250px;
-    border-radius: 15px;
-    margin-bottom: 35px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 32px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    background: linear-gradient(135deg, rgba(76,29,149,0.7), rgba(67,56,202,0.7)), 
-                url('https://digitalmindsbd.online/wp-content/uploads/2025/06/2-600x271.png') center/cover no-repeat;
-    animation: fadeIn 1.5s ease forwards;
-}
-
-ul {
-    list-style: none;
-    padding: 0;
-    margin: 20px 0;
-    animation: fadeIn 2s ease forwards;
-}
-
-ul li {
-    margin: 12px 0;
-    font-size: 17px;
-    position: relative;
-    padding-left: 30px;
-    opacity: 0;
-    animation: slideInLeft 1s forwards;
-}
-
-ul li::before {
-    content: '🎬';
-    position: absolute;
-    left: 0;
-    top: 0;
-}
-
-.buy-button {
-    text-align: center;
-    margin: 40px 0;
-    animation: bounceIn 1s ease forwards;
-}
-
-.footer {
-    margin-top: 50px;
-    text-align: center;
-    font-size: 14px;
-    color: #777;
-    animation: fadeIn 2s ease forwards;
-}
-
-/* Animations */
-@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-@keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px);} to { opacity: 1; transform: translateY(0);} }
-@keyframes slideInLeft { from { opacity: 0; transform: translateX(-30px);} to { opacity: 1; transform: translateX(0);} }
-@keyframes bounceIn { 0% { transform: scale(0.5); opacity: 0;} 60% { transform: scale(1.2); opacity: 1;} 100% { transform: scale(1); } }
-</style>
-</head>
-<body>
-
-<div class="container">
-
-    <div class="product-banner">DOOPLY WORDPRESS THEME v2.5.5</div>
-
-    <h1>Dooply WordPress Theme v2.5.5 – Lifetime License</h1>
-
-    <p style="text-align:center; font-size:18px; animation: fadeIn 2s ease forwards;">
-        Get the full premium Dooply WordPress theme v2.5.5 with lifetime updates. Secure purchase for <strong>$25 USD</strong>.
-    </p>
-
-    <ul>
-        <li>Premium Dooply WordPress Theme v2.5.5 (Lifetime License)</li>
-        <li>Modern movie-style UI with clean blue-purple gradients</li>
-        <li>Fast & SEO-optimized for blogs and websites</li>
-        <li>Includes installation guide + theme files</li>
-        <li>Free support after purchase</li>
-    </ul>
-
-    <div class="buy-button">
-        <!-- PayPal Smart Button -->
-        <div id="paypal-button-container"></div>
-    </div>
-
-    <p class="footer">© 2025 RexcelmarkTech. All Rights Reserved.</p>
-
-</div>
-
 <!-- PayPal SDK -->
-<script src="https://www.paypal.com/sdk/js?client-id=YOUR_LIVE_CLIENT_ID&currency=USD"></script>
+<script src="https://www.paypal.com/sdk/js?client-id=AYwnqKQANTptydubBPhcZc_Tq_a1T0zpNgb4YCJZcBr2E1nseI7HQUjI2Obq3wvp471DBbNUFgILjpaK&currency=USD"></script>
 
 <script>
 paypal.Buttons({
-    style: {
-        color: 'blue',
-        shape: 'rect',
-        label: 'pay',
-        height: 50
-    },
+    style: { color: 'blue', shape: 'rect', label: 'pay', height: 50 },
     createOrder: function(data, actions) {
         return actions.order.create({
             purchase_units: [{
@@ -150,12 +14,9 @@ paypal.Buttons({
     },
     onApprove: function(data, actions) {
         return actions.order.capture().then(function(details) {
-            // Payment successful, redirect to download
-            window.location.href = "https://drive.google.com/uc?export=download&id=1xUU66tnymfCyy11buwcCtdyZGfQJHBpL";
+            // Redirect to secure download via Vercel serverless API
+            window.location.href = `/api/download?orderID=${data.orderID}`;
         });
     }
 }).render('#paypal-button-container');
 </script>
-
-</body>
-</html>

@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Buy Dooply WordPress Theme with Lifetime License – $25 USD. Instant download after payment.">
-<title>Dooply WordPress Theme – Lifetime License</title>
+<meta name="description" content="Buy Dooply WordPress Theme v2.5.5 with Lifetime License – $25 USD. Instant download after payment.">
+<title>Dooply WordPress Theme v2.5.5 – Lifetime License</title>
 
 <style>
 body {
@@ -85,25 +85,6 @@ ul li::before {
     animation: bounceIn 1s ease forwards;
 }
 
-.buy-button a {
-    display: inline-block;
-    background: linear-gradient(90deg,#6366F1,#4C1D95);
-    padding: 18px 40px;
-    border-radius: 15px;
-    font-size: 22px;
-    color: white;
-    font-weight: 700;
-    text-decoration: none;
-    box-shadow: 0 6px 20px rgba(99,102,241,0.5);
-    transition: 0.3s;
-}
-
-.buy-button a:hover {
-    background: linear-gradient(90deg,#4C1D95,#4338CA);
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 8px 25px rgba(76,29,149,0.6);
-}
-
 .footer {
     margin-top: 50px;
     text-align: center;
@@ -113,42 +94,26 @@ ul li::before {
 }
 
 /* Animations */
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-@keyframes fadeInDown {
-    from { opacity: 0; transform: translateY(-20px);}
-    to { opacity: 1; transform: translateY(0);}
-}
-
-@keyframes slideInLeft {
-    from { opacity: 0; transform: translateX(-30px);}
-    to { opacity: 1; transform: translateX(0);}
-}
-
-@keyframes bounceIn {
-    0% { transform: scale(0.5); opacity: 0;}
-    60% { transform: scale(1.2); opacity: 1;}
-    100% { transform: scale(1); }
-}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px);} to { opacity: 1; transform: translateY(0);} }
+@keyframes slideInLeft { from { opacity: 0; transform: translateX(-30px);} to { opacity: 1; transform: translateX(0);} }
+@keyframes bounceIn { 0% { transform: scale(0.5); opacity: 0;} 60% { transform: scale(1.2); opacity: 1;} 100% { transform: scale(1); } }
 </style>
 </head>
 <body>
 
 <div class="container">
 
-    <div class="product-banner">DOOPLY WORDPRESS THEME</div>
+    <div class="product-banner">DOOPLY WORDPRESS THEME v2.5.5</div>
 
-    <h1>Dooply WordPress Theme – Lifetime License</h1>
+    <h1>Dooply WordPress Theme v2.5.5 – Lifetime License</h1>
 
     <p style="text-align:center; font-size:18px; animation: fadeIn 2s ease forwards;">
-        Get the full premium Dooply WordPress theme with lifetime updates. Secure purchase for <strong>$25 USD</strong>.
+        Get the full premium Dooply WordPress theme v2.5.5 with lifetime updates. Secure purchase for <strong>$25 USD</strong>.
     </p>
 
     <ul>
-        <li>Premium Dooply WordPress Theme (Lifetime License)</li>
+        <li>Premium Dooply WordPress Theme v2.5.5 (Lifetime License)</li>
         <li>Modern movie-style UI with clean blue-purple gradients</li>
         <li>Fast & SEO-optimized for blogs and websites</li>
         <li>Includes installation guide + theme files</li>
@@ -156,15 +121,41 @@ ul li::before {
     </ul>
 
     <div class="buy-button">
-        <!-- PayPal.Me link forcing USD -->
-        <a href="https://paypal.me/RexcelmarkTech/25USD" target="_blank">
-            💳 Buy & Download Now — $25 USD
-        </a>
+        <!-- PayPal Smart Button -->
+        <div id="paypal-button-container"></div>
     </div>
 
     <p class="footer">© 2025 RexcelmarkTech. All Rights Reserved.</p>
 
 </div>
+
+<!-- PayPal SDK -->
+<script src="https://www.paypal.com/sdk/js?client-id=YOUR_LIVE_CLIENT_ID&currency=USD"></script>
+
+<script>
+paypal.Buttons({
+    style: {
+        color: 'blue',
+        shape: 'rect',
+        label: 'pay',
+        height: 50
+    },
+    createOrder: function(data, actions) {
+        return actions.order.create({
+            purchase_units: [{
+                amount: { value: '25.00' },
+                description: 'Dooply WordPress Theme v2.5.5 – Lifetime License'
+            }]
+        });
+    },
+    onApprove: function(data, actions) {
+        return actions.order.capture().then(function(details) {
+            // Payment successful, redirect to download
+            window.location.href = "https://drive.google.com/uc?export=download&id=1xUU66tnymfCyy11buwcCtdyZGfQJHBpL";
+        });
+    }
+}).render('#paypal-button-container');
+</script>
 
 </body>
 </html>

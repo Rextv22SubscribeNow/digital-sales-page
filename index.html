@@ -85,20 +85,20 @@ ul li::before {
     animation: bounceIn 1s ease forwards;
 }
 
-.buy-button input[type="submit"] {
+.buy-button a {
+    display: inline-block;
     background: linear-gradient(90deg,#6366F1,#4C1D95);
     padding: 18px 40px;
     border-radius: 15px;
     font-size: 22px;
     color: white;
     font-weight: 700;
-    border: none;
-    cursor: pointer;
+    text-decoration: none;
     box-shadow: 0 6px 20px rgba(99,102,241,0.5);
     transition: 0.3s;
 }
 
-.buy-button input[type="submit"]:hover {
+.buy-button a:hover {
     background: linear-gradient(90deg,#4C1D95,#4338CA);
     transform: translateY(-3px) scale(1.05);
     box-shadow: 0 8px 25px rgba(76,29,149,0.6);
@@ -156,17 +156,10 @@ ul li::before {
     </ul>
 
     <div class="buy-button">
-        <!-- PayPal Buy Now Form with USD and Auto-Redirect -->
-        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-            <input type="hidden" name="cmd" value="_xclick">
-            <input type="hidden" name="business" value="RexcelmarkTech@example.com">
-            <input type="hidden" name="item_name" value="Dooply WordPress Theme – Lifetime License">
-            <input type="hidden" name="amount" value="25.00">
-            <input type="hidden" name="currency_code" value="USD">
-            <input type="hidden" name="return" value="https://digital-sales-page-yourusername.vercel.app/api/download?payment_status=Completed">
-            <input type="hidden" name="cancel_return" value="https://rextv22subscribenow.github.io/digital-sales-page/">
-            <input type="submit" value="💳 Buy & Download Now — $25 USD">
-        </form>
+        <!-- PayPal.Me link -->
+        <a href="https://paypal.me/RexcelmarkTech/25" target="_blank">
+            💳 Buy & Download Now — $25 USD
+        </a>
     </div>
 
     <p class="footer">© 2025 RexcelmarkTech. All Rights Reserved.</p>
